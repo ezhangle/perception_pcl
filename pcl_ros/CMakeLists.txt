@@ -52,6 +52,11 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_eigen
 )
 
+## Avoid Windows header namespace conflicts
+if(WIN32)
+  add_definitions(-DNOMINMAX)
+endif()
+
 ## Add include directories
 include_directories(include
   ${Boost_INCLUDE_DIRS}
@@ -105,6 +110,7 @@ catkin_package(
 ## Declare the pcl_ros_tf library
 add_library(pcl_ros_tf src/transforms.cpp)
 target_link_libraries(pcl_ros_tf ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+set_target_properties(pcl_ros_tf PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 add_dependencies(pcl_ros_tf ${catkin_EXPORTED_TARGETS})
 
 ## Nodelets
