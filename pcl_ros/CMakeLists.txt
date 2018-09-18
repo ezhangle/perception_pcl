@@ -124,6 +124,7 @@ add_library(pcl_ros_io
   src/pcl_ros/io/pcd_io.cpp
 )
 target_link_libraries(pcl_ros_io pcl_ros_tf ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+set_target_properties(pcl_ros_io PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 class_loader_hide_library_symbols(pcl_ros_io)
 
 ## Declare the pcl_ros_features library
@@ -159,6 +160,7 @@ add_library(pcl_ros_filters
   src/pcl_ros/filters/crop_box.cpp
 )
 target_link_libraries(pcl_ros_filters pcl_ros_tf ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+set_target_properties(pcl_ros_filters PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 add_dependencies(pcl_ros_filters ${PROJECT_NAME}_gencfg)
 class_loader_hide_library_symbols(pcl_ros_filters)
 
